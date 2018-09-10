@@ -25,6 +25,7 @@ public class NetworkPlayerInput : NetworkBehaviour
             float inputH = Input.GetAxis("Horizontal");
             float inputV = Input.GetAxis("Vertical");
             controller.Move(inputH, inputV);
+            
         }
 	}
 }
