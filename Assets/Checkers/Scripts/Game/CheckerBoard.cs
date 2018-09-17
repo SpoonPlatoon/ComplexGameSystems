@@ -2,17 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckerBoard : MonoBehaviour
 {
     #region Singleton
     // "Instance" keyword variable can be accessed everywhere
-    public static CheckerBoard Instance;
-    private void Awake()
-    {
-        // Set 'this' class as the first instance
-        Instance = this;
-    }
+    public static CheckerBoard Instance { set; get; }
     #endregion
     #region Variables
     [Header("Game Logic")]
@@ -24,6 +20,18 @@ public class CheckerBoard : MonoBehaviour
     public LayerMask hitLayers;
     public float rayDistance = 25f;
 
+    public Transform chatMessageContainer;
+    public GameObject messagePrefab;
+    public GameObject highlightsContainer;
+    public Text nameTag;
+    public Transform canvas;
+    public CanvasGroup alertCanvas;
+
+    private float lastAlert;
+    private float winTime;
+    private bool alertActive;
+    private bool gameIsOver;
+
     private bool isWhite; // Is the current character white?
     private bool isWhiteTurn; // Is it white's turn?
     private bool hasKilled; // Has the player killed a piece?
@@ -34,7 +42,7 @@ public class CheckerBoard : MonoBehaviour
     private Vector2 endDrag; // Position of end drag
     #endregion
     #region Unity Events
-    void Start ()
+    void Start()
     {
         // Generate the board on startup
         GenerateBoard();
@@ -44,23 +52,23 @@ public class CheckerBoard : MonoBehaviour
         UpdateMouseOver();
 
         // Is is white's turn or black's turn?
-        if(isWhite ? isWhiteTurn : !isWhiteTurn)
+        if (isWhite ? isWhiteTurn : !isWhiteTurn)
         {
             // Convert coordinates to int (again to be sure)
             int x = (int)mouseOver.x;
             int y = (int)mouseOver.y;
 
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 SelectPiece(x, y);
             }
 
             // Is there a selectedPiece currently?
-            if(selectedPiece != null)
+            if (selectedPiece != null)
             {
                 // Update the drag position
                 UpdatePieceDrag(selectedPiece);
-                if(Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0))
                 {
                     //MovePiece(selectedPiece, x, y);
                     TryMove((int)startDrag.x, (int)startDrag.y, x, y);
@@ -71,7 +79,7 @@ public class CheckerBoard : MonoBehaviour
     }
     #endregion
     #region Modifiers
-    void TryMove(int x1,int y1, int x2, int y2)
+    void TryMove(int x1, int y1, int x2, int y2)
     {
         if (x1 < 0 || x1 > pieces.GetLength(0) || y1 < 0 || y1 > pieces.GetLength(1) || x2 < 0 || x2 > pieces.GetLength(0) || y2 < 0 || y2 > pieces.GetLength(1))
         {
@@ -81,7 +89,7 @@ public class CheckerBoard : MonoBehaviour
             //y2 = end y
             return;
         }
-        if(selectedPiece != null)
+        if (selectedPiece != null)
         {
             MovePiece(selectedPiece, x2, y2);
 
@@ -96,7 +104,7 @@ public class CheckerBoard : MonoBehaviour
     void SelectPiece(int x, int y)
     {
         //check if x and y is out of the bounds of the array
-        if( x < 0 || x >= 8 || 
+        if (x < 0 || x >= 8 ||
             y < 0 || y >= 8)
         {
             return;
@@ -104,8 +112,8 @@ public class CheckerBoard : MonoBehaviour
 
         //set piece to pieces[x,y]
         Piece p = pieces[x, y];
-        
-        if(p != null && !p.isWhite)
+
+        if (p != null && !p.isWhite)
         {
             selectedPiece = p;
             startDrag = mouseOver;
@@ -169,8 +177,8 @@ public class CheckerBoard : MonoBehaviour
     void UpdateMouseOver()
     {
         // Does the main not camera exist?
-        if(Camera.main == null)
-        { 
+        if (Camera.main == null)
+        {
             Debug.Log("Unable to find Main Camera");
             // Exit the whole function
             return;
@@ -180,7 +188,7 @@ public class CheckerBoard : MonoBehaviour
         Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         // Perform raycast
-        if(Physics.Raycast(camRay, out hit, rayDistance, hitLayers))
+        if (Physics.Raycast(camRay, out hit, rayDistance, hitLayers))
         {
             // Convert world position to an array index (by converting to int aswell)
             mouseOver.x = (int)(hit.point.x - boardOffset.x);
@@ -213,5 +221,61 @@ public class CheckerBoard : MonoBehaviour
             pieceToDrag.transform.position = hit.point + Vector3.up;
         }
     }
+
+    #endregion
+    #region UI
+    public void Alert(string text)
+    {
+        // Get text component from alertCanvas children
+        alertCanvas.GetComponentInChildren<Text>().text = text;
+        // Set alertCanvas alpha to 1
+        alertCanvas.alpha = 1;
+        // listAlert in time
+        lastAlert = Time.time;
+        // set alertActive to true
+        alertActive = true;
+    }
+    public void UpdateAlert()
+    {
+        float timeDifference = Time.time - lastAlert;
+        // Is alertActive
+        if (alertActive)
+        {
+            // if time - lastAlert > 1.5 seconds
+            if (Time.time - lastAlert > 1.5f)
+            {
+                // Set alertCanvas alpha to 1 - (time - lastAlert) - 1.5)
+                alertCanvas.alpha = 1 - (timeDifference - 1.5f);
+                // if time - lastalert > 2.5
+                if (timeDifference > 2.5f)
+                {
+                    // Set alertActive to false
+                    alertActive = false;
+                }
+            }
+        }
+    }
+    public void ChatMessage(string msg)
+    {
+        // Instantiate clone of messagePrefab
+        GameObject clone = Instantiate(messagePrefab);
+        // Set clone parent to chatMessageContainer
+        clone.transform.SetParent(chatMessageContainer);
+        // Get text component in children from clone
+        Text messageText = clone.GetComponentInChildren<Text>();
+        // set text component's text to message
+        messageText.text = msg;
+    }
+    public void SendChatMessage()
+    {
+        // Find Object of Type InputField
+        InputField input = GameObject.Find("MessageInput").GetComponent<InputField>();
+        // If inputField.text is empty
+        if (input.text == "")
+            return;
+        // Call client.send("CMSG|" + text)
+        // Set i.text to ""
+        input.text = "";
+    } 
+    #endregion
 }
-#endregion
