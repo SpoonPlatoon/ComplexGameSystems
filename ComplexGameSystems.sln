@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexGameSystems", "Assem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexGameSystems", "Assembly-CSharp-firstpass.csproj", "{7F06A2E9-1EE2-CF0B-1979-A4CD1C887C68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexGameSystems", "Tests.csproj", "{7D09292A-CFC5-1DE8-5B01-25BE5A60DD7E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexGameSystems", "Assembly-CSharp-Editor-firstpass.csproj", "{195AF4C3-2C5F-7A8D-627F-8892C7470C44}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{7F06A2E9-1EE2-CF0B-1979-A4CD1C887C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F06A2E9-1EE2-CF0B-1979-A4CD1C887C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F06A2E9-1EE2-CF0B-1979-A4CD1C887C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D09292A-CFC5-1DE8-5B01-25BE5A60DD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D09292A-CFC5-1DE8-5B01-25BE5A60DD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D09292A-CFC5-1DE8-5B01-25BE5A60DD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D09292A-CFC5-1DE8-5B01-25BE5A60DD7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{195AF4C3-2C5F-7A8D-627F-8892C7470C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{195AF4C3-2C5F-7A8D-627F-8892C7470C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195AF4C3-2C5F-7A8D-627F-8892C7470C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
