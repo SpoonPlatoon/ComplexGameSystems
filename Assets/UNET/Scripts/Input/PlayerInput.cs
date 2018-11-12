@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+namespace UNET
 {
-    public PlayerController controller;
-	
-	// Update is called once per frame
-	void Update ()
+    public class PlayerInput : MonoBehaviour
     {
-        float inputH = Input.GetAxis("Horizontal");
-        float inputV = Input.GetAxis("Vertical");
-        controller.Move(inputH, inputV);
+        public PlayerController controller;
+
+        // Update is called once per frame
+        void Update()
+        {
+            float inputH = Input.GetAxis("Horizontal");
+            float inputV = Input.GetAxis("Vertical");
+            controller.Move(inputH, inputV);
+        }
     }
 }

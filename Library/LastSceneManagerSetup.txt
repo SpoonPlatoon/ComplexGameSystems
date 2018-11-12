@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Examples/ScriptableObjects/Scenes/Game.unity
+- path: Assets/Examples/GoHome/Scenes/GoHome.unity
   isLoaded: 1
   isActive: 1

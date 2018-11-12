@@ -176,3 +176,7 @@ C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp-fi
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp-firstpass.csproj.CopyComplete
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\nunit.framework.dll
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\nunit.framework.xml

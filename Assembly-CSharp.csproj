@@ -70,6 +70,15 @@
     <Compile Include="Assets\Checkers\Scripts\Network\Clients\ServerClient.cs" />
     <Compile Include="Assets\Checkers\Scripts\Network\Server.cs" />
     <Compile Include="Assets\Checkers\Scripts\UI\SendButton.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Collectables\Collectable.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Enemies\Enemy.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Helpers\OnEmpty.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Helpers\OnGoal.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Inputs\UserInput.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Other\Level.cs" />
+    <Compile Include="Assets\Examples\GoHome\Scripts\Player.cs" />
     <Compile Include="Assets\Examples\ScriptableObjects\Scripts\Data\EnemyData.cs" />
     <Compile Include="Assets\Examples\ScriptableObjects\Scripts\Enemies\Cannon.cs" />
     <Compile Include="Assets\Examples\ScriptableObjects\Scripts\Enemies\Enemy.cs" />

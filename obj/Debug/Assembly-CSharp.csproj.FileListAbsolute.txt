@@ -177,3 +177,7 @@ C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp.cs
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp.dll
 C:\Users\ty.wilson7\source\repos\ComplexGameSystems\obj\Debug\Assembly-CSharp.pdb
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\nunit.framework.dll
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\ty.wilson7\source\repos\ComplexGameSystems\Temp\bin\Debug\nunit.framework.xml
